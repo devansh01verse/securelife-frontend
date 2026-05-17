@@ -17,7 +17,7 @@ export default function InsuranceWebsite() {
 
   // Fetch real reviews from Spring Boot
   useEffect(() => {
-    fetch('http://localhost:8080/api/reviews')
+    fetch('https://securelife-backend-5lmz.onrender.com')
       .then(response => response.json())
       .then(data => {
         const unapproved = data.filter(review => review.approved === false);
@@ -35,7 +35,7 @@ export default function InsuranceWebsite() {
     const instaInput = document.getElementById(`insta-${id}`);
     const instaUrl = instaInput ? instaInput.value : "";
 
-    fetch(`http://localhost:8080/api/reviews/${id}/approve`, {
+    fetch(`https://securelife-backend-5lmz.onrender.com/${id}/approve`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ instagramUrl: instaUrl })
@@ -50,7 +50,7 @@ export default function InsuranceWebsite() {
   // DELETE a review
   const handleDelete = (id) => {
     if(window.confirm("Are you sure you want to permanently delete this review?")) {
-      fetch(`http://localhost:8080/api/reviews/${id}`, {
+      fetch(`https://securelife-backend-5lmz.onrender.com/${id}`, {
         method: 'DELETE',
       })
       .then(() => {
@@ -204,7 +204,7 @@ export default function InsuranceWebsite() {
         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
       };
 
-      fetch('http://localhost:8080/api/reviews', {
+      fetch('https://securelife-backend-5lmz.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newReview)
@@ -320,7 +320,7 @@ export default function InsuranceWebsite() {
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border badge-shadow mb-8 ${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'}`}>
               <span className="w-2 h-2 rounded-full bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]"></span>
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Insurance & Wealth Advisor</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Dheeraj Mittal •Insurance & Wealth Advisor</span>
             </div>
             <h1 className={`text-5xl md:text-7xl lg:text-[5rem] font-bold mb-6 serif hero-text transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
               The advisor families call when the <span className="italic text-sky-500 font-light drop-shadow-md">stakes are high.</span>
@@ -410,7 +410,7 @@ export default function InsuranceWebsite() {
             </div>
             
             <div className="w-full lg:w-1/2">
-              <h2 className="text-sm font-bold text-sky-500 uppercase tracking-wider mb-2">About The Consultant</h2>
+              <h2 className="text-sm font-bold text-sky-500 uppercase tracking-wider mb-2">Meet Dheeraj Mittal</h2>
               <h3 className={`text-3xl md:text-4xl font-bold mb-6 serif transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>A trusted partner in your financial journey.</h3>
               <p className={`mb-6 text-lg leading-relaxed ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                 With over a decade of specialized experience in the Indian insurance sector, I've helped thousands of families navigate the complexities of life and health coverage. 
@@ -556,7 +556,7 @@ export default function InsuranceWebsite() {
                   </div>
                   <div>
                     <p className="text-slate-500 text-sm">Call Directly</p>
-                    <p className="font-medium text-lg text-slate-200">+91 98765 43210</p>
+                    <p className="font-medium text-lg text-slate-200">+91 9873089369</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -565,7 +565,7 @@ export default function InsuranceWebsite() {
                   </div>
                   <div>
                     <p className="text-slate-500 text-sm">Email Address</p>
-                    <p className="font-medium text-lg text-slate-200">consult@securelife.in</p>
+                    <p className="font-medium text-lg text-slate-200">mittaldheeraj75@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -574,7 +574,7 @@ export default function InsuranceWebsite() {
                   </div>
                   <div>
                     <p className="text-slate-500 text-sm">Office Location</p>
-                    <p className="font-medium text-lg text-slate-200">Mumbai, Maharashtra</p>
+                    <p className="font-medium text-lg text-slate-200">112-A Shivam Tower Rdc Rajnagar, Ghaziabad</p>
                   </div>
                 </div>
               </div>
