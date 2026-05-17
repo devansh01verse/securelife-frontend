@@ -17,7 +17,7 @@ export default function InsuranceWebsite() {
 
   // Fetch real reviews from Spring Boot
   useEffect(() => {
-    fetch('https://securelife-backend-5lmz.onrender.com')
+    fetch('https://securelife-backend-5lmz.onrender.com/api/reviews')
       .then(response => response.json())
       .then(data => {
         const unapproved = data.filter(review => review.approved === false);
@@ -35,7 +35,7 @@ export default function InsuranceWebsite() {
     const instaInput = document.getElementById(`insta-${id}`);
     const instaUrl = instaInput ? instaInput.value : "";
 
-    fetch(`https://securelife-backend-5lmz.onrender.com/${id}/approve`, {
+    fetch(`https://securelife-backend-5lmz.onrender.com/api/reviews/${id}/approve`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ instagramUrl: instaUrl })
@@ -50,7 +50,7 @@ export default function InsuranceWebsite() {
   // DELETE a review
   const handleDelete = (id) => {
     if(window.confirm("Are you sure you want to permanently delete this review?")) {
-      fetch(`https://securelife-backend-5lmz.onrender.com/${id}`, {
+      fetch(`https://securelife-backend-5lmz.onrender.com/api/reviews/${id}`, {
         method: 'DELETE',
       })
       .then(() => {
@@ -204,7 +204,7 @@ export default function InsuranceWebsite() {
         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
       };
 
-      fetch('https://securelife-backend-5lmz.onrender.com', {
+      fetch('https://securelife-backend-5lmz.onrender.com/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newReview)
