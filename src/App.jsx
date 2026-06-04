@@ -335,7 +335,7 @@ export default function InsuranceWebsite() {
           </div>
           <div className="relative max-w-sm md:max-w-md mx-auto mt-20">
             <img 
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              src="/assets/dheeraj mittal prof profile.png" 
               alt="Strategic Advisor" 
               className="rounded-[2.5rem] w-full object-cover aspect-[3/4] shadow-2xl relative z-10"
             />
@@ -393,7 +393,7 @@ export default function InsuranceWebsite() {
               <div className="relative">
                 <div className={`absolute inset-0 rounded-3xl translate-x-4 translate-y-4 -z-10 ${isDarkMode ? 'bg-sky-900/30' : 'bg-sky-100'}`}></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="/assets/dheeraj mittal prof profile.png" 
                   alt="Professional Consultant" 
                   className="rounded-3xl w-full object-cover aspect-[4/5] badge-shadow"
                 />
@@ -641,7 +641,7 @@ export default function InsuranceWebsite() {
 
       {/* FLOATING WHATSAPP BUTTON */}
       <a 
-        href="https://wa.me/1234567890" 
+        href="https://wa.me/9873089369" 
         target="_blank" 
         rel="noreferrer"
         className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:scale-110 hover:shadow-green-500/50 transition-all z-50 group"
@@ -654,4 +654,4 @@ export default function InsuranceWebsite() {
       </a>
     </div>
   );
-}
+}0
