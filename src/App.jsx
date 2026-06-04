@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, MessageCircle, ChevronRight, Activity, Heart, Car, Trash2, Lock, Moon, Sun } from 'lucide-react';
-
+import profileImg from './assets/profile.png';
 export default function InsuranceWebsite() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -335,8 +335,8 @@ export default function InsuranceWebsite() {
           </div>
           <div className="relative max-w-sm md:max-w-md mx-auto mt-20">
             <img 
-              src="/assets/dheeraj mittal prof profile.png" 
-              alt="Strategic Advisor" 
+              src={profileImg} 
+              alt="Dheeraj Mittal - Strategic Advisor" 
               className="rounded-[2.5rem] w-full object-cover aspect-[3/4] shadow-2xl relative z-10"
             />
             <div className="absolute top-1/4 -left-8 md:-left-20 ai-card badge-shadow p-3 md:p-4 rounded-2xl flex items-center gap-4 z-20">
@@ -374,7 +374,7 @@ export default function InsuranceWebsite() {
               <p className="text-slate-500 text-sm font-medium uppercase tracking-wider">Happy Families</p>
             </div>
             <div className="text-center px-4">
-              <h3 className={`text-4xl font-bold mb-2 serif ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>15+</h3>
+              <h3 className={`text-4xl font-bold mb-2 serif ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>25+</h3>
               <p className="text-slate-500 text-sm font-medium uppercase tracking-wider">Years Experience</p>
             </div>
             <div className="text-center px-4">
@@ -393,8 +393,8 @@ export default function InsuranceWebsite() {
               <div className="relative">
                 <div className={`absolute inset-0 rounded-3xl translate-x-4 translate-y-4 -z-10 ${isDarkMode ? 'bg-sky-900/30' : 'bg-sky-100'}`}></div>
                 <img 
-                  src="/assets/dheeraj mittal prof profile.png" 
-                  alt="Professional Consultant" 
+                  src={profileImg} 
+                  alt="Dheeraj Mittal - Strategic Advisor" 
                   className="rounded-3xl w-full object-cover aspect-[4/5] badge-shadow"
                 />
                 <div className="absolute -bottom-6 -left-6 ai-card p-4 rounded-2xl flex items-center gap-4">
