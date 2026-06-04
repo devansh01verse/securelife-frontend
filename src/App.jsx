@@ -57,7 +57,7 @@ export default function InsuranceWebsite() {
         setPendingReviews(pendingReviews.filter(r => r.id !== id));
         setLiveReviews(liveReviews.filter(r => r.id !== id));
       })
-      .catch(err => console.error("Error deleting:", err));
+      .catch(err => console.error("Error deleting:", err)) ;
     }
   };
 
@@ -654,4 +654,8 @@ export default function InsuranceWebsite() {
       </a>
     </div>
   );
+<<<<<<< HEAD
 }0
+=======
+}
+>>>>>>> 6b842004080f6f723ebf5db2444601a692d4f88f
