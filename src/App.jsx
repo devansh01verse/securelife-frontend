@@ -1,3 +1,5 @@
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react'; // Make sure useRef and useState are imported from react
 import React, { useState, useEffect } from 'react';
 import { Shield, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, MessageCircle, ChevronRight, Activity, Heart, Car, Trash2, Lock, Moon, Sun } from 'lucide-react';
 import profileImg from './assets/profile.png';
@@ -9,12 +11,14 @@ export default function InsuranceWebsite() {
   const [currentView, setCurrentView] = useState('home'); 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false); 
-
+  const form = useRef();
+  const [isSending, setIsSending] = useState(false);
+  const [sendSuccess, setSendSuccess] = useState(false);
   // Database States
   const [pendingReviews, setPendingReviews] = useState([]); 
   const [publicReviews, setPublicReviews] = useState([]);
   const [liveReviews, setLiveReviews] = useState([]); 
-
+  
   // Fetch real reviews from Spring Boot
   useEffect(() => {
     fetch('https://securelife-backend-5lmz.onrender.com/api/reviews')
@@ -605,6 +609,19 @@ export default function InsuranceWebsite() {
                     <option>Portfolio Review</option>
                     <option>Other</option>
                   </select>
+                </div>
+                {/* Query / Message Box */}
+                <div className="flex flex-col gap-2 mt-4">
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    Your Query
+                  </label>
+                  <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="How can I help you achieve your financial goals?"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none"
+                    required
+                  ></textarea>
                 </div>
                 <button type="button" className={`w-full font-medium py-4 rounded-xl transition-colors flex justify-center items-center gap-2 badge-shadow ${isDarkMode ? 'bg-white text-slate-900 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-800'}`}>
                   Send Request <ArrowRight className="w-4 h-4" />
