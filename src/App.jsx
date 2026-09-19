@@ -1,23 +1,67 @@
+import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react'; // Make sure useRef and useState are imported from react
-import React, { useState, useEffect } from 'react';
 import { Shield, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, MessageCircle, ChevronRight, Activity, Heart, Car, Trash2, Lock, Moon, Sun } from 'lucide-react';
 import profileImg from './assets/profile.png';
+
 export default function InsuranceWebsite() {
+  // Navigation, Auth & Theme States
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // Navigation, Auth & Theme States
   const [currentView, setCurrentView] = useState('home'); 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); 
-  const form = useRef();
-  const [isSending, setIsSending] = useState(false);
-  const [sendSuccess, setSendSuccess] = useState(false);
+// Initialize theme based on system preference
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
+  // Listen for real-time system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e) => setIsDarkMode(e.matches);
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   // Database States
   const [pendingReviews, setPendingReviews] = useState([]); 
   const [publicReviews, setPublicReviews] = useState([]);
   const [liveReviews, setLiveReviews] = useState([]); 
+
+  // EmailJS States (Moved UP!)
+  const form = useRef();
+  const [isSending, setIsSending] = useState(false);
+  const [sendSuccess, setSendSuccess] = useState(false);
+
+  // Email Sending Function
+  const sendEmail = (e) => {
+    e.preventDefault(); // Stops the page from reloading
+    setIsSending(true);
+
+    // You must replace these strings with your actual EmailJS keys!
+    emailjs.sendForm(
+      'service_2gfphrw', 
+      'template_69iydfa', 
+      form.current, 
+      '23KGxl7HQRPNF9NTS'
+    )
+    .then((result) => {
+        console.log('Success!', result.text);
+        setSendSuccess(true);
+        setIsSending(false);
+        form.current.reset(); // Clears the boxes
+        
+        // Hides the success message after 3 seconds
+        setTimeout(() => setSendSuccess(false), 3000);
+    }, (error) => {
+        console.log('FAILED...', error.text);
+        setIsSending(false);
+        alert("Something went wrong. Please try again.");
+    });
+  }; 
   
   // Fetch real reviews from Spring Boot
   useEffect(() => {
@@ -228,7 +272,7 @@ export default function InsuranceWebsite() {
           </button>
           <h2 className={`text-3xl font-bold serif mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Share Your Experience</h2>
           <p className="text-slate-500 mb-8">Your feedback helps me improve and helps others secure their future.</p>
-          <form onSubmit={handleReviewSubmit} className="space-y-5">
+          <form ref={form} onSubmit={sendEmail} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-slate-500 mb-1">Full Name</label>
               <input name="name" type="text" required className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-colors ${isDarkMode ? 'bg-slate-800 border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-900'}`} placeholder="e.g. Sneha Rao" />
@@ -344,7 +388,7 @@ export default function InsuranceWebsite() {
               className="rounded-[2.5rem] w-full object-cover aspect-[3/4] shadow-2xl relative z-10"
             />
             <div className="absolute top-1/4 -left-8 md:-left-20 ai-card badge-shadow p-3 md:p-4 rounded-2xl flex items-center gap-4 z-20">
-              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold serif text-lg badge-shadow ${isDarkMode ? 'bg-white text-slate-900' : 'bg-slate-900 text-white'}`}>15</div>
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold serif text-lg badge-shadow ${isDarkMode ? 'bg-white text-slate-900' : 'bg-slate-900 text-white'}`}>25</div>
               <div className="text-left hidden sm:block">
                 <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Years Exp.</p>
                 <p className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Trusted Advisor</p>
@@ -585,29 +629,36 @@ export default function InsuranceWebsite() {
             </div>
             
             <div className={`p-8 rounded-3xl badge-shadow relative border ${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-transparent text-slate-900'}`}>
-              <form className="space-y-6">
+<form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-700'}`}>First Name</label>
-                    <input type="text" className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="John" />
+                    <input name="first_name" type="text" required className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="John" />
                   </div>
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-700'}`}>Last Name</label>
-                    <input type="text" className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="Doe" />
+                    <input name="last_name" type="text" required className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="Doe" />
                   </div>
                 </div>
+
+                {/* --- NEW EMAIL FIELD --- */}
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-700'}`}>Email Address</label>
+                  <input name="email" type="email" required className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="john@example.com" />
+                </div>
+
                 <div>
                   <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-700'}`}>Phone Number</label>
-                  <input type="tel" className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="+91 XXXXX XXXXX" />
+                  <input name="phone_number" type="tel" required className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`} placeholder="+91 XXXXX XXXXX" />
                 </div>
                 <div>
                   <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-700'}`}>Insurance Interest</label>
-                  <select className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all appearance-none ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`}>
-                    <option>Health Insurance</option>
-                    <option>Term Life Insurance</option>
-                    <option>Motor Insurance</option>
-                    <option>Portfolio Review</option>
-                    <option>Other</option>
+                  <select name="insurance_interest" className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-all appearance-none ${isDarkMode ? 'bg-slate-950 border-slate-800 text-white' : 'bg-white border-slate-200'}`}>
+                    <option value="Health Insurance">Health Insurance</option>
+                    <option value="Term Life Insurance">Term Life Insurance</option>
+                    <option value="Motor Insurance">Motor Insurance</option>
+                    <option value="Portfolio Review">Portfolio Review</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 {/* Query / Message Box */}
@@ -619,13 +670,24 @@ export default function InsuranceWebsite() {
                     name="message"
                     rows="4"
                     placeholder="How can I help you achieve your financial goals?"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none"
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none resize-none transition-all ${
+                      isDarkMode 
+                        ? 'bg-slate-950 border-slate-800 text-white placeholder-slate-600' 
+                        : 'bg-white border-slate-200 text-slate-900 placeholder-slate-400'
+                    }`}
                     required
                   ></textarea>
                 </div>
-                <button type="button" className={`w-full font-medium py-4 rounded-xl transition-colors flex justify-center items-center gap-2 badge-shadow ${isDarkMode ? 'bg-white text-slate-900 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-800'}`}>
-                  Send Request <ArrowRight className="w-4 h-4" />
+                <button 
+                  type="submit" 
+                  disabled={isSending}
+                  className={`w-full font-medium py-4 rounded-xl transition-colors flex justify-center items-center gap-2 badge-shadow ${isDarkMode ? 'bg-white text-slate-900 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-800'} ${isSending ? 'opacity-70 cursor-not-allowed' : ''}`}
+                >
+                  {isSending ? 'Sending...' : 'Send Request'} <ArrowRight className="w-4 h-4" />
                 </button>
+                {sendSuccess && (
+                  <p className="text-green-500 font-medium text-center mt-2">Message sent successfully!</p>
+                )}
               </form>
             </div>
           </div>
