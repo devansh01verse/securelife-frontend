@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Shield, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, MessageCircle, ChevronRight, Activity, Heart, Car, Trash2, Lock, Moon, Sun } from 'lucide-react';
+import { Shield, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, MessageCircle, ChevronRight, Activity, Heart, Car, Trash2, Lock, Moon, Sun, TrendingUp } from 'lucide-react';
 import profileImg from './assets/profile.png';
 
 export default function InsuranceWebsite() {
@@ -322,10 +322,26 @@ export default function InsuranceWebsite() {
       {/* NAVIGATION */}
       <div className="fixed top-6 left-0 right-0 z-50 flex flex-col items-center px-4 pointer-events-none">
         <nav className={`pointer-events-auto w-full max-w-5xl flex items-center justify-between gap-4 md:gap-8 px-2 py-2 backdrop-blur-xl border shadow-lg rounded-full transition-all duration-300 ${isDarkMode ? 'bg-slate-900/80 border-slate-800 shadow-black/50' : 'bg-white/80 border-slate-200 shadow-slate-200/50'}`}>
+          
+          {/* REPLACE THIS SECTION */}
           <div className="flex items-center gap-3 pl-1">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold serif text-sm ${isDarkMode ? 'bg-white text-slate-900 shadow-white/20' : 'bg-slate-900 text-white shadow-slate-900/20'}`}>SL</div>
-            <span className={`font-semibold hidden sm:block pr-4 md:pr-6 border-r text-sm ${isDarkMode ? 'text-white border-slate-700' : 'text-slate-900 border-slate-200'}`}>SecureLife</span>
+            {/* The SL Circle Logo */}
+            <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold serif text-sm ${isDarkMode ? 'bg-white text-slate-900 shadow-white/20' : 'bg-slate-900 text-white shadow-slate-900/20'}`}>
+              SL
+            </div>
+            
+            {/* The Text Container (SecureLife + By Dheeraj Mittal) */}
+            <div className={`flex flex-col md:flex-row md:items-baseline md:gap-1.5 pr-2 md:pr-6 md:border-r ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}`}>
+              <span className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                SecureLife
+              </span>
+              <span className={`text-[10px] md:text-xs font-medium tracking-wider uppercase ${isDarkMode ? 'text-sky-400' : 'text-sky-600'}`}>
+                By Dheeraj Mittal
+              </span>
+            </div>
           </div>
+          {/* END OF REPLACEMENT SECTION */}
+
           <div className="hidden md:flex items-center space-x-8 px-2">
             <a href="#about" className={`font-medium text-sm transition-colors ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`}>About</a>
             <a href="#services" className={`font-medium text-sm transition-colors ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`}>Services</a>
@@ -419,7 +435,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="/assets/hdfc.png" 
                 alt="HDFC Ergo" 
-                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity- ${isDarkMode ? 'invert' : ''}`}
+                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -428,7 +444,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/lic.jpg" 
                 alt="LIC of India" 
-                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity- ${isDarkMode ? 'invert' : ''}`}
+                className={`h-16 md:h-18 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -446,7 +462,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/star.png" 
                 alt="Star Health" 
-                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-16 md:h-22 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -464,7 +480,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/nj.jpg" 
                 alt="NJ Wealth" 
-                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-16 md:h-19 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
 
@@ -482,7 +498,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/manipal.png" 
                 alt="Manipal Cigna" 
-                className={`h-12 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-${isDarkMode ? 'invert' : ''}`}
+                className={`h-16 md:h-28 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
 
@@ -565,15 +581,20 @@ export default function InsuranceWebsite() {
       </section>
       
       
-      {/* SERVICES SECTION */}
+{/* SERVICES SECTION */}
       <section id="services" className={`py-24 transition-colors ${isDarkMode ? 'bg-slate-900/30' : 'bg-slate-50/50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-sm font-bold text-sky-500 uppercase tracking-wider mb-2">Expert Services</h2>
-            <h3 className={`text-3xl md:text-4xl font-bold mb-4 serif ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Comprehensive Protection Plans</h3>
-            <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Select the right coverage designed for your unique needs. No jargon, just clear protection.</p>
+            {/* Updated Title to include Wealth */}
+            <h3 className={`text-3xl md:text-4xl font-bold mb-4 serif ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Comprehensive Protection & Wealth Plans</h3>
+            <p className={`text-lg ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Select the right coverage and investment strategies designed for your unique needs. No jargon, just clear execution.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          {/* Changed to md:grid-cols-2 so it forms a perfect 2x2 grid on desktop! */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            
+            {/* Health Insurance */}
             <div className="ai-card p-8 rounded-3xl">
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${isDarkMode ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-50 text-blue-600'}`}>
                 <Heart className="w-7 h-7" />
@@ -582,6 +603,8 @@ export default function InsuranceWebsite() {
               <p className={`mb-6 line-clamp-3 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Comprehensive medical coverage that protects your savings against rising healthcare costs, including cashless treatments.</p>
               <a href="#contact" className="text-sky-500 font-medium flex items-center gap-1 hover:gap-2 transition-all">Learn more <ChevronRight className="w-4 h-4" /></a>
             </div>
+            
+            {/* Term Life Insurance */}
             <div className="ai-card p-8 rounded-3xl">
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${isDarkMode ? 'bg-indigo-500/10 text-indigo-400' : 'bg-indigo-50 text-indigo-600'}`}>
                 <Shield className="w-7 h-7" />
@@ -590,6 +613,8 @@ export default function InsuranceWebsite() {
               <p className={`mb-6 line-clamp-3 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>High-cover, low-premium life insurance ensuring your family's financial independence and lifestyle security in your absence.</p>
               <a href="#contact" className="text-sky-500 font-medium flex items-center gap-1 hover:gap-2 transition-all">Learn more <ChevronRight className="w-4 h-4" /></a>
             </div>
+            
+            {/* Motor Insurance */}
             <div className="ai-card p-8 rounded-3xl">
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${isDarkMode ? 'bg-sky-500/10 text-sky-400' : 'bg-sky-50 text-sky-600'}`}>
                 <Car className="w-7 h-7" />
@@ -598,10 +623,17 @@ export default function InsuranceWebsite() {
               <p className={`mb-6 line-clamp-3 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Reliable coverage for your vehicles against accidents, theft, and third-party liabilities with quick claim processing.</p>
               <a href="#contact" className="text-sky-500 font-medium flex items-center gap-1 hover:gap-2 transition-all">Learn more <ChevronRight className="w-4 h-4" /></a>
             </div>
-            <div className={`col-span-1 md:col-span-2 lg:col-span-3 border-2 border-dashed rounded-3xl p-8 text-center bg-transparent mt-4 flex flex-col items-center justify-center min-h-[160px] transition-colors ${isDarkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-               <Activity className={`w-8 h-8 mb-3 ${isDarkMode ? 'text-slate-700' : 'text-slate-400'}`} />
-               <p className={`font-medium ${isDarkMode ? 'text-slate-500' : 'text-slate-500'}`}>Investment & Mutual Fund Advisory Services Coming Soon</p>
+            
+            {/* Mutual Fund Advisory */}
+            <div className="ai-card p-8 rounded-3xl">
+              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${isDarkMode ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-50 text-emerald-600'}`}>
+                <TrendingUp className="w-7 h-7" />
+              </div>
+              <h4 className={`text-xl font-bold mb-3 serif ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Mutual Fund Advisory</h4>
+              <p className={`mb-6 line-clamp-3 ${isDarkMode ? 'text-slate-400' : 'text-slate-600'}`}>Strategic wealth creation through expertly guided mutual fund portfolios, tailored to your risk appetite and long-term financial goals.</p>
+              <a href="#contact" className="text-sky-500 font-medium flex items-center gap-1 hover:gap-2 transition-all">Learn more <ChevronRight className="w-4 h-4" /></a>
             </div>
+
           </div>
         </div>
       </section>
