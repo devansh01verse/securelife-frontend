@@ -10,12 +10,8 @@ export default function InsuranceWebsite() {
   const [currentView, setCurrentView] = useState('home'); 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 // Initialize theme based on system preference
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  });
+// Always start in Light Mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Listen for real-time system theme changes
   useEffect(() => {
@@ -408,7 +404,91 @@ export default function InsuranceWebsite() {
           </div>
         </div>
       </section>
+{/* PARTNERS / TRUSTED BY SECTION */}
+      <section className={`py-10 border-t transition-colors ${isDarkMode ? 'bg-slate-900/20 border-slate-800' : 'bg-slate-50/50 border-slate-100'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className={`text-center text-xs font-bold uppercase tracking-widest mb-8 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+            Authorized Partner For India's Leading Providers
+          </p>
+          
+          {/* Logo Container (Fixed Overflow Clipping) */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory items-center justify-start gap-10 md:gap-16 lg:gap-20 pb-4 pt-2 px-6 md:px-12 hide-scrollbar w-full 2xl:justify-center">
+            
+            {/* 1. HDFC Ergo */}
+            <a href="https://www.hdfcergo.com/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="/assets/hdfc.png" 
+                alt="HDFC Ergo" 
+                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+            
+            {/* 2. LIC of India */}
+            <a href="https://licindia.in/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/lic.jpg" 
+                alt="LIC of India" 
+                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+            
+            {/* 3. Care Health Insurance */}
+            <a href="https://www.careinsurance.com/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/care.png" 
+                alt="Care Health Insurance" 
+                className={`h-8 md:h-10 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+            
+            {/* 4. Star Health */}
+            <a href="https://www.starhealth.in/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/star.png" 
+                alt="Star Health" 
+                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+            
+            {/* 5. ICICI Prudential */}
+            <a href="https://www.icicilombard.com/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/icici.png" 
+                alt="ICICI Prudential" 
+                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
 
+            {/* 6. NJ Wealth */}
+            <a href="https://www.njindiaonline.in/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/nj.jpg" 
+                alt="NJ Wealth" 
+                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+
+            {/* 7. Oriental Insurance */}
+            <a href="https://www.orientalinsurance.org.in/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/ori.webp" 
+                alt="Oriental Insurance"
+                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+            
+            {/* 8. Manipal Cigna */}
+            <a href="https://www.manipalcigna.com/" target="_blank" rel="noreferrer" className="shrink-0 snap-start block">
+              <img 
+                src="./assets/manipal.png" 
+                alt="Manipal Cigna" 
+                className={`h-12 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+              />
+            </a>
+
+          </div>
+        </div>
+      </section>
       {/* STATS SECTION */}
       <section id="claims" className={`py-16 border-y backdrop-blur-sm transition-colors ${isDarkMode ? 'bg-slate-900/50 border-slate-800' : 'bg-white/50 border-slate-100'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -483,7 +563,8 @@ export default function InsuranceWebsite() {
           </div>
         </div>
       </section>
-
+      
+      
       {/* SERVICES SECTION */}
       <section id="services" className={`py-24 transition-colors ${isDarkMode ? 'bg-slate-900/30' : 'bg-slate-50/50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -524,7 +605,6 @@ export default function InsuranceWebsite() {
           </div>
         </div>
       </section>
-
       {/* TESTIMONIALS SECTION (UNIFIED HORIZONTAL SCROLL) */}
       <section id="testimonials" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -622,6 +702,7 @@ export default function InsuranceWebsite() {
                   </div>
                   <div>
                     <p className="text-slate-500 text-sm">Office Location</p>
+
                     <p className="font-medium text-lg text-slate-200">112-A Shivam Tower Rdc Rajnagar, Ghaziabad</p>
                   </div>
                 </div>
@@ -629,7 +710,7 @@ export default function InsuranceWebsite() {
             </div>
             
             <div className={`p-8 rounded-3xl badge-shadow relative border ${isDarkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-transparent text-slate-900'}`}>
-<form ref={form} onSubmit={sendEmail} className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-slate-400' : 'text-slate-700'}`}>First Name</label>
