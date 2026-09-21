@@ -419,7 +419,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="/assets/hdfc.png" 
                 alt="HDFC Ergo" 
-                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity- ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -428,7 +428,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/lic.jpg" 
                 alt="LIC of India" 
-                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity- ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -437,7 +437,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/care.png" 
                 alt="Care Health Insurance" 
-                className={`h-8 md:h-10 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-8 md:h-10 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100  ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -446,7 +446,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/star.png" 
                 alt="Star Health" 
-                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-14 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -455,7 +455,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/icici.png" 
                 alt="ICICI Prudential" 
-                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
 
@@ -464,7 +464,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/nj.jpg" 
                 alt="NJ Wealth" 
-                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-12 md:h-14 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
 
@@ -473,7 +473,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/ori.webp" 
                 alt="Oriental Insurance"
-                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-10 md:h-12 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 ${isDarkMode ? 'invert' : ''}`}
               />
             </a>
             
@@ -482,7 +482,7 @@ export default function InsuranceWebsite() {
               <img 
                 src="./assets/manipal.png" 
                 alt="Manipal Cigna" 
-                className={`h-12 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 ${isDarkMode ? 'invert' : ''}`}
+                className={`h-12 md:h-16 w-auto max-w-none object-contain transition-all duration-300 opacity-${isDarkMode ? 'invert' : ''}`}
               />
             </a>
 
