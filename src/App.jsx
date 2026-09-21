@@ -33,17 +33,26 @@ export default function InsuranceWebsite() {
   const [sendSuccess, setSendSuccess] = useState(false);
 
   // Email Sending Function
-  const sendEmail = (e) => {
+const sendEmail = (e) => {
     e.preventDefault(); // Stops the page from reloading
     setIsSending(true);
 
-    // You must replace these strings with your actual EmailJS keys!
+    // 1. Send notification email to YOU (Admin)
     emailjs.sendForm(
-      'service_2gfphrw', 
-      'template_69iydfa', 
+      'service_q23qsfd', 
+      'template_ipuaam9', // Contact Us template (sends to you)
       form.current, 
       '23KGxl7HQRPNF9NTS'
     )
+    .then(() => {
+      // 2. Once the admin email succeeds, send the Auto-Reply to the USER
+      return emailjs.sendForm(
+        'service_q23qsfd', 
+        'template_69iydfa', // Auto-Reply template (sends to client)
+        form.current, 
+        '23KGxl7HQRPNF9NTS'
+      );
+    })
     .then((result) => {
         console.log('Success!', result.text);
         setSendSuccess(true);
@@ -52,12 +61,13 @@ export default function InsuranceWebsite() {
         
         // Hides the success message after 3 seconds
         setTimeout(() => setSendSuccess(false), 3000);
-    }, (error) => {
+    })
+    .catch((error) => {
         console.log('FAILED...', error.text);
         setIsSending(false);
         alert("Something went wrong. Please try again.");
     });
-  }; 
+  };
   
   // Fetch real reviews from Spring Boot
   useEffect(() => {
