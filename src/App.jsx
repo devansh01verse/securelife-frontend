@@ -278,7 +278,7 @@ const sendEmail = (e) => {
           </button>
           <h2 className={`text-3xl font-bold serif mb-2 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Share Your Experience</h2>
           <p className="text-slate-500 mb-8">Your feedback helps me improve and helps others secure their future.</p>
-          <form ref={form} onSubmit={sendEmail} className="space-y-6">
+          <form onSubmit={handleReviewSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-slate-500 mb-1">Full Name</label>
               <input name="name" type="text" required className={`w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-sky-500 outline-none transition-colors ${isDarkMode ? 'bg-slate-800 border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-900'}`} placeholder="e.g. Sneha Rao" />
